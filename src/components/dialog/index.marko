@@ -1,0 +1,37 @@
+<attrs/{
+  onClose = () => {},
+  onOpen = () => {},
+  title,
+  renderBody
+}/>
+<const/open(){
+  getDialogOverlay().classList.remove('hidden');
+  onOpen();
+}/>
+<const/close(){
+  getDialogOverlay().classList.add('hidden');
+  onClose();
+}/>
+<div.overlay.hidden/getDialogOverlay>
+  <div.dialog>
+    <div.flex.mb-7>
+      <${typeof title === 'string' ? 'h3' : title}>
+        ${typeof title === 'string' ? title : ''}
+      </>
+      <button.ml-auto onClick=close>✖</button>
+    </div>
+    <${renderBody}/>
+  </div>
+</div>
+<return=[open, close]/>
+<style>
+  .overlay {
+    @apply fixed top-0 left-0 right-0 bottom-0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .dialog{
+    @apply bg-white dark:bg-slate-800;
+    @apply mx-auto mt-32 max-w-lg px-4 py-6;
+    @apply p-4 rounded;
+  }
+</style>
