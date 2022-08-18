@@ -1,0 +1,43 @@
+import { calculate } from './utils';
+<attrs/{
+  title,
+  location = 'top',
+  spacing = 5,
+  renderBody
+}/>
+<const/mouseOver(){
+  getTooltip().classList.remove('tooltip-hidden');
+  const { top, left} = calculate(getTooltip(), getTarget(), location, spacing);
+  getTooltip().style.top = top + 'px';
+  getTooltip().style.left = left + 'px';
+}/>
+<const/mouseOut(){
+  getTooltip().classList.add('tooltip-hidden');
+}/>
+
+<span.tooltip-container/getContainer onMouseOver=mouseOver onMouseOut=mouseOut>
+  <span.tooltip-target/getTarget>
+    <${renderBody}/>
+  </span>
+  <span.tooltip.tooltip-hidden/getTooltip>
+    <if=(typeof title === 'string')>${title}</if>
+    <else><${title}/></else>
+  </span>
+</span>
+<style>
+  .tooltip-container{
+    @apply inline-block;
+  }
+  .tooltip {
+    @apply absolute;
+    @apply rounded bg-gray-900 text-white;
+    @apply px-2 py-1;
+    @apply transition-all ease-in-out duration-200;
+    @apply whitespace-nowrap;
+    @apply max-w-[200px];
+  }
+  .tooltip-hidden {
+    @apply invisible;
+    @apply opacity-0;
+  }
+</style>

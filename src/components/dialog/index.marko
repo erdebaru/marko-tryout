@@ -12,8 +12,8 @@
   getDialogOverlay().classList.add('hidden');
   onClose();
 }/>
-<div.overlay.hidden/getDialogOverlay>
-  <div.dialog>
+<div.overlay.hidden/getDialogOverlay onClick(){ close(); }>
+  <div.dialog onClick(e){ e.stopPropagation(); }>
     <div.flex.mb-7>
       <${typeof title === 'string' ? 'h3' : title}>
         ${typeof title === 'string' ? title : ''}
