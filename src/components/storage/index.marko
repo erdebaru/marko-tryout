@@ -1,0 +1,8 @@
+<attrs/{ default: initialValue, storageKey }/>
+<const/stored=(typeof window !== 'undefined' && localStorage.getItem(storageKey))/>
+<let/store=stored ? stored : initialValue/>
+<effect() { 
+  console.log('storage effect')
+  localStorage.setItem(storageKey, store)
+}/>
+<return:=store/>

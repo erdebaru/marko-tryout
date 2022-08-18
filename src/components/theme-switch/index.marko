@@ -1,0 +1,11 @@
+<attrs/{ className }/>
+<storage/theme='' storageKey='theme'/>
+<const/handleClick(){
+  theme = theme === 'dark' ? '' : 'dark';
+}/>
+<effect() { 
+  document.getElementsByTagName( 'html' )[0].classList.toggle('dark', theme === 'dark');
+}/>
+<button class=className onClick=handleClick>
+  ${theme === 'dark' ? '🌙' : '☀️'}
+</button>

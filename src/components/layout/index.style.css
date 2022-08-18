@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-green-200 dark:bg-slate-700;
+  @apply dark:text-slate-200;
+  @apply transition duration-200 ease-in-out;
+}
+
+header {
+  @apply bg-green-600 dark:bg-slate-800;
+  @apply transition duration-200 ease-in-out;
+}
+
+header nav {
+  @apply flex;
+}
+
+header nav > a {
+  @apply px-2 py-4;
+  @apply transition duration-200 ease-in-out;
+  @apply text-green-300;
+  @apply hover:bg-green-500 hover:text-green-700;
+}
+
+header nav > *:last-child {
+  @apply ml-auto;
+}
