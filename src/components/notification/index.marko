@@ -1,0 +1,46 @@
+static var CONTEXT_KEY = "__subtree_context__";
+static function getProvider(out, provider) {
+  return out[CONTEXT_KEY] && out[CONTEXT_KEY][provider.___providerId];
+}
+
+class {
+  onCreate() {
+    this.sync = this.sync.bind(this);
+  }
+  
+  onInput(input, out) {
+    debugger;
+  }
+
+  close(){
+    const notificationBar = this.getEl('notification-bar');
+    const messageContainer = this.getEl('message');
+    notificationBar.classList.add('hidden');
+    messageContainer.innerHTML = '';
+  }
+  show(message = ''){
+    const notificationBar = this.getEl('notification-bar');
+    const messageContainer = this.getEl('message');
+    notificationBar.classList.remove('hidden');
+    messageContainer.innerHTML = message;
+  }
+}
+<div.notification-bar.hidden key="notification-bar">
+  <p key="message"></p>
+  <button onClick(){ close(); }>✖</button>
+</div>  
+
+<style>
+  .notification-bar{
+    @apply p-4 flex;
+    @apply bg-slate-300;
+    @apply text-slate-600;
+  }
+  .notification-bar p {
+    @apply flex-1;
+  }
+  .hidden {
+    display: none !important;
+  }
+</style>
+

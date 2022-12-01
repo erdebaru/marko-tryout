@@ -6,10 +6,10 @@ import { calculate } from './utils';
   renderBody
 }/>
 <const/mouseOver(){
-  getTooltip().classList.remove('tooltip-hidden');
   const { top, left} = calculate(getTooltip(), getTarget(), location, spacing);
   getTooltip().style.top = top + 'px';
   getTooltip().style.left = left + 'px';
+  getTooltip().classList.remove('tooltip-hidden');
 }/>
 <const/mouseOut(){
   getTooltip().classList.add('tooltip-hidden');
